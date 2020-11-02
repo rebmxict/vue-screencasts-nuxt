@@ -5,6 +5,8 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex'
+
 	export default {
 		head() {
 			return {
@@ -12,16 +14,17 @@
 			}
 		},
 
-		async asyncData({ $axios, params }) {
+		async asyncData({ $axios, params, store }) {
 			let response = await $axios.get('/videos')
-			let videos = response.data
-			let video = {}
-			videos.map(_video => {
-				if (_video.id === params.id) {
-					video = _video
-				}
+			let videos = response.data.data.map(v => v.attributes)
+
+			store.commit('SET_CURRENT_VIDEO', video)
+		},
+
+		computed: {
+			...mapState ({
+				video: 'currentVideo'
 			})
-			return { video };
 		}
 	}
 </script>
