@@ -34,6 +34,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa'
   ],
@@ -49,5 +50,18 @@ export default {
 
   server: {
     port: 8000
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/sessions', method: 'post', propertyName: 'token' },
+          logout: { url: '/sessions/logout', method: 'post' },
+          user: { url: '/sessions/user', method: 'get', propertyName: 'user' }
+        },
+        tokenType: ''
+      }
+    }
   }
 }

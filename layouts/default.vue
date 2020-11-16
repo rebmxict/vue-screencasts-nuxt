@@ -1,69 +1,79 @@
 <template>
-	<v-app>
-		<v-app-bar app color='green'>
-			<v-btn text to='/'>Vue Screencasts</v-btn>
-			<v-btn text to='/videos'>Videos</v-btn>
+	<v-app id="inspire">
+		<v-app-bar
+			app
+			color="green"
+			flat
+		>
+			<v-container class="py-0 fill-height">
+				<v-avatar
+					class="mr-10"
+					color="grey darken-1"
+					size="32"
+				>
+					<img src="/icon.png" />
+				</v-avatar>
+				<span style="font-weight: bold">Evan Wunder</span>
+
+				<v-spacer></v-spacer>
+
+				<v-btn-toggle
+					v-model="toggle_exclusive"
+					color="primary"
+					dense
+					mandatory
+					group
+				>
+					<v-btn
+						v-for="link in links"
+						:key="link.to"
+						text
+						class="active-class"
+					>
+						<nuxt-link :to='`${ link.to }`' class="custom-nuxt-link">
+							{{ link.field }}
+						</nuxt-link>
+					</v-btn>
+				</v-btn-toggle>
+			</v-container>
 		</v-app-bar>
 
-		<v-main>
+		<v-main class="grey lighten-3">
 			<Nuxt />
 		</v-main>
 	</v-app>
 </template>
 
+<script>
+	export default {
+		data: () => ({
+			links: [
+				{
+					field: 'Summary',
+					to: '/summary'
+				},
+				{
+					field: 'Services',
+					to: '/services'
+				},
+				{
+					field: 'Portfolio',
+					to: '/portfolio'
+				},
+				{
+					field: 'Contact',
+					to: '/contact'
+				}
+			],
+			model: 0,
+		}),
+	}
+</script>
+
 <style>
-html {
-	font-family:
-		'Source Sans Pro',
-		-apple-system,
-		BlinkMacSystemFont,
-		'Segoe UI',
-		Roboto,
-		'Helvetica Neue',
-		Arial,
-		sans-serif;
-	font-size: 16px;
-	word-spacing: 1px;
-	-ms-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-	box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-	margin: 0;
-}
-
-.button--green {
-	display: inline-block;
-	border-radius: 4px;
-	border: 1px solid #3b8070;
-	color: #3b8070;
+.custom-nuxt-link {
+	color: #000000db!important;
 	text-decoration: none;
-	padding: 10px 30px;
-}
-
-.button--green:hover {
-	color: #fff;
-	background-color: #3b8070;
-}
-
-.button--grey {
-	display: inline-block;
-	border-radius: 4px;
-	border: 1px solid #35495e;
-	color: #35495e;
-	text-decoration: none;
-	padding: 10px 30px;
-	margin-left: 15px;
-}
-
-.button--grey:hover {
-	color: #fff;
-	background-color: #35495e;
+	width: 100%;
 }
 </style>
