@@ -11,9 +11,9 @@
 					color="grey darken-1"
 					size="32"
 				>
-					<img src="/icon.png" />
+					<img src="/mark.png" />
 				</v-avatar>
-				<span style="font-weight: bold">Evan Wunder</span>
+				<span style="font-weight: bold">Rio Ephraim</span>
 
 				<v-spacer></v-spacer>
 
@@ -75,5 +75,9 @@
 	color: #000000db!important;
 	text-decoration: none;
 	width: 100%;
+}
+
+.container {
+	max-width: 1178px!important;
 }
 </style>

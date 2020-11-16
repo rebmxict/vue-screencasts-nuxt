@@ -6,10 +6,10 @@
 					<v-divider class="my-2" style="border-color: transparent;"></v-divider>
 
 					<v-img
-						lazy-src="evan.jpg"
-						max-height="250"
-						max-width="250"
-						src="/evan.jpg"
+						lazy-src="/rio.png"
+						max-height="450"
+						max-width="450"
+						src="/rio.png"
 					></v-img>
 
 					<v-list color="transparent">
@@ -21,7 +21,7 @@
 								:key="item.to"
 								link
 							>
-								<nuxt-link :to='`/summary/${ item.to }`' class="custom-nuxt-link">
+								<nuxt-link :to='`/services/${ item.to }`' class="custom-nuxt-link">
 									<v-list-item-content>
 										<v-list-item-title>
 											{{ item.field }}
@@ -32,25 +32,15 @@
 						</v-list-item-group>
 
 						<v-divider class="my-2"></v-divider>
-
-						<v-list-item
-							link
-							color="grey lighten-4"
-						>
-							<v-list-item-content>
-								<v-list-item-title>
-									Refresh
-								</v-list-item-title>
-							</v-list-item-content>
-						</v-list-item>
 					</v-list>
 				</v-sheet>
 			</v-col>
 
-			<v-col>
+			<v-col style="">
 				<v-sheet
-					min-height="70vh"
+					min-height="0vh"
 					rounded="lg"
+					style="overflow: hidden;margin-top: 8px;"
 				>
 					<nuxt-child />
 				</v-sheet>
@@ -64,24 +54,28 @@ export default {
 	data: () => ({
 		items: [
 			{
-				field: "Front-End",
-				to: "/frontend"
+				field: "Web",
+				to: "web"
 			},
 			{
-				field: "Back-End",
-				to: "/backend"
+				field: "Mobile",
+				to: "mobile"
 			},
 			{
 				field: "Database",
-				to: "/database"
+				to: "database"
 			},
 			{
 				field: "DevOps",
-				to: "/devops"
+				to: "devops"
 			}
 		],
-		model: 0
+		model: 0,
 	}),
+	mounted () {
+		let root = '/services/web'
+		this.$router.push({ path: root, query: { } });
+	}
 }
 </script>
 

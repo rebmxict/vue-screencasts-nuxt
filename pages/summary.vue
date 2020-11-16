@@ -6,10 +6,10 @@
 					<v-divider class="my-2" style="border-color: transparent;"></v-divider>
 
 					<v-img
-						lazy-src="evan.jpg"
+						lazy-src="/rio.png"
 						max-height="450"
 						max-width="450"
-						src="/evan.jpg"
+						src="/rio.png"
 					></v-img>
 
 					<v-list color="transparent">
@@ -72,6 +72,10 @@ export default {
 		],
 		model: 0
 	}),
+	mounted () {
+		let root = '/summary/education'
+		this.$router.push({ path: root, query: { } });
+	}
 }
 </script>
 
